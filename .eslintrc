@@ -309,7 +309,7 @@
     "comma-style": [2, "last"],
 
     // enforces consistent naming when capturing the current execution context (off by default)
-    "consistent-this": 2,
+    "consistent-this": [2, "self"],
 
     // enforce newline at the end of file, with no multiple empty lines
     "eol-last": 2,
