@@ -34,8 +34,8 @@ var Row = React.createClass({
    * Current box inside Row click
    * @param  {Number} index
    */
-  'handleClick': function onHandleClick () {
-    //next step: 12
+  'handleClick': function onHandleClick (index) {
+    this.props.handleClick(this.props.gridIndex, index);
   },
   /**
    * render some Box component
@@ -70,6 +70,15 @@ var Grid = React.createClass({
       ]
     };
   },
+  'handleClick': function onHandleClick (column, row) {
+    var values = this.state.values;
+    var currentValue = values[column][row] === 'X' ? 'O' : 'X';
+
+    values[column][row] = currentValue;
+    this.setState({
+      'values': values
+    });
+  },
   /**
    * render some Row component
    * @return {ReactElement}
@@ -77,7 +86,7 @@ var Grid = React.createClass({
   'render': function onRender () {
     var rows = this.state.values.map(function onMap (row, index){
       return (
-        <Row key={index} values={row} gridIndex={index}/>
+        <Row key={index} values={row} gridIndex={index} handleClick={this.handleClick}/>
       )
     }.bind(this));
 
