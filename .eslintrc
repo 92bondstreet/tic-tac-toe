@@ -3,8 +3,12 @@
     "browser": true,
     "node": true
   },
+  "plugins": [
+    "react"
+  ],
   "ecmaFeatures": {
-    "blockBindings": true
+    "blockBindings": true,
+    "jsx": true
   },
   "rules": {
     // disallow or enforce trailing commas
@@ -44,7 +48,7 @@
     "no-extra-boolean-cast": 2,
 
     // disallow unnecessary parentheses (off by default)
-    "no-extra-parens": 2,
+    "no-extra-parens": 0,
 
     // disallow unnecessary semicolons
     "no-extra-semi": 2,
