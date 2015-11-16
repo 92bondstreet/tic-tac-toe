@@ -6,29 +6,33 @@ var boxStyle = {
   'height': '100px',
   'width': '100px'
 };
-var ALTERNANCE_MS = 300;
 
 var Box = React.createClass({
+  /**
+   * get the initial state of Box
+   * @return {Object} [description]
+   */
   'getInitialState': function onGetInitialState () {
     return {
       'value': this.props.initialValue
     };
   },
-  'componentWillMount': function onComponentWillMount () {
-    var self = this;
-
-    this.timer = setInterval(function onTimer () {
-      self.setState({
-        'value': self.state.value === 'X' ? 'O' : 'X'
-      });
-    }, ALTERNANCE_MS);
+  /**
+   * Box click callback
+   * @return {[type]} [description]
+   */
+  'handleClick': function onHandleClick () {
+    this.setState({
+      'value': this.state.value === 'X' ? 'O' : 'X'
+    });
   },
-  'componentWillUnmount': function onComponentWillUnmount () {
-    clearInterval(this.timer);
-  },
+  /**
+   * render the button HTML Element
+   * @return {ReactElement}
+   */
   'render': function onRender () {
     return (
-      <button style={boxStyle}>{this.state.value}</button>
+      <button style={boxStyle} onClick={this.handleClick}>{this.state.value}</button>
     );
   }
 });
