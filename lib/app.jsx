@@ -31,38 +31,23 @@ var Box = React.createClass({
 
 var Row = React.createClass({
   /**
-   * get the initial state of the Row
-   * @return {Object} [description]
-   */
-  'getInitialState': function onGetInitialState () {
-    return {
-      'values': ['-', '-', '-']
-    };
-  },
-  /**
    * Current box inside Row click
    * @param  {Number} index
    */
-  'handleClick': function onHandleClick (index) {
-    var values = this.state.values;
-    var currentValue = values[index] === 'X' ? 'O' : 'X';
-
-    values[index] = currentValue;
-
-    this.setState({
-      'values': values
-    });
+  'handleClick': function onHandleClick () {
+    //next step: 12
   },
   /**
    * render some Box component
    * @return {ReactElement}
    */
   'render': function onRender () {
-    var boxes = this.state.values.map(function(value, index){
+    var boxes = this.props.values.map(function onMap (value, index) {
       return (
         <Box value={value} key={index} rowIndex={index} handleClick={this.handleClick}/>
       );
     }.bind(this));
+
     return (
       <div>
         {boxes}
@@ -73,19 +58,35 @@ var Row = React.createClass({
 
 var Grid = React.createClass({
   /**
+   * get the initial state of the Row
+   * @return {Object} [description]
+   */
+  'getInitialState': function onGetInitialState () {
+    return {
+      'values': [
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ['-', '-', '-']
+      ]
+    };
+  },
+  /**
    * render some Row component
    * @return {ReactElement}
    */
-  render: function onRender () {
+  'render': function onRender () {
+    var rows = this.state.values.map(function onMap (row, index){
+      return (
+        <Row key={index} values={row} gridIndex={index}/>
+      )
+    }.bind(this));
+
     return (
       <div>
-        <Row/>
-        <Row/>
-        <Row/>
+        {rows}
       </div>
     );
   }
-})
-
+});
 
 React.render(<Grid/>, document.body);
