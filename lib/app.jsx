@@ -71,4 +71,21 @@ var Row = React.createClass({
   }
 });
 
-React.render(<Row/>, document.body);
+var Grid = React.createClass({
+  /**
+   * render some Row component
+   * @return {ReactElement}
+   */
+  render: function onRender () {
+    return (
+      <div>
+        <Row/>
+        <Row/>
+        <Row/>
+      </div>
+    );
+  }
+})
+
+
+React.render(<Grid/>, document.body);
