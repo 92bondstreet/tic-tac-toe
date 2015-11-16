@@ -7,6 +7,10 @@ var boxStyle = {
   'width': '100px'
 };
 
+/**
+ * Define the Box component
+ * @class Box
+ */
 var Box = React.createClass({
   /**
    * get the initial state of Box
@@ -37,4 +41,20 @@ var Box = React.createClass({
   }
 });
 
-React.render(<Box initialValue={'X'}/>, document.body);
+var Row = React.createClass({
+  /**
+   * render some Box component
+   * @return {ReactElement}
+   */
+  'render': function onRender () {
+    return (
+      <div>
+        <Box initialValue={'X'}/>
+        <Box initialValue={'X'}/>
+        <Box initialValue={'X'}/>
+      </div>
+    );
+  }
+});
+
+React.render(<Row/>, document.body);
