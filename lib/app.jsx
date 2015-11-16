@@ -13,21 +13,12 @@ var boxStyle = {
  */
 var Box = React.createClass({
   /**
-   * get the initial state of Box
-   * @return {Object} [description]
-   */
-  'getInitialState': function onGetInitialState () {
-    return {
-      'value': this.props.initialValue
-    };
-  },
-  /**
    * Box click callback
    * @return {[type]} [description]
    */
   'handleClick': function onHandleClick () {
     this.setState({
-      'value': this.state.value === 'X' ? 'O' : 'X'
+      'value': this.props.value === 'X' ? 'O' : 'X'
     });
   },
   /**
@@ -36,22 +27,34 @@ var Box = React.createClass({
    */
   'render': function onRender () {
     return (
-      <button style={boxStyle} onClick={this.handleClick}>{this.state.value}</button>
+      <button style={boxStyle} onClick={this.handleClick}>{this.props.value}</button>
     );
   }
 });
 
 var Row = React.createClass({
   /**
+   * get the initial state of the Row
+   * @return {Object} [description]
+   */
+  'getInitialState': function onGetInitialState () {
+    return {
+      'values': ['-', '-', '-']
+    };
+  },
+  /**
    * render some Box component
    * @return {ReactElement}
    */
   'render': function onRender () {
+    var boxes = this.state.values.map(function(value, index){
+      return (
+        <Box value={value} key={index} rowIndex={index} />
+      );
+    });
     return (
       <div>
-        <Box initialValue={'X'}/>
-        <Box initialValue={'X'}/>
-        <Box initialValue={'X'}/>
+        {boxes}
       </div>
     );
   }
