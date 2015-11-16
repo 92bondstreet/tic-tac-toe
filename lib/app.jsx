@@ -14,12 +14,9 @@ var boxStyle = {
 var Box = React.createClass({
   /**
    * Box click callback
-   * @return {[type]} [description]
    */
   'handleClick': function onHandleClick () {
-    this.setState({
-      'value': this.props.value === 'X' ? 'O' : 'X'
-    });
+    this.props.handleClick(this.props.rowIndex);
   },
   /**
    * render the button HTML Element
@@ -43,15 +40,29 @@ var Row = React.createClass({
     };
   },
   /**
+   * Current box inside Row click
+   * @param  {Number} index
+   */
+  'handleClick': function onHandleClick (index) {
+    var values = this.state.values;
+    var currentValue = values[index] === 'X' ? 'O' : 'X';
+
+    values[index] = currentValue;
+
+    this.setState({
+      'values': values
+    });
+  },
+  /**
    * render some Box component
    * @return {ReactElement}
    */
   'render': function onRender () {
     var boxes = this.state.values.map(function(value, index){
       return (
-        <Box value={value} key={index} rowIndex={index} />
+        <Box value={value} key={index} rowIndex={index} handleClick={this.handleClick}/>
       );
-    });
+    }.bind(this));
     return (
       <div>
         {boxes}
