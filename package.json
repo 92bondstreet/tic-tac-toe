@@ -1,0 +1,24 @@
+{
+  "name": "tic-tact-toe",
+  "version": "1.0.0",
+  "description": "building a Tic Tac Toe game with React.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/92bondstreet/tic-tac-toe.git"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/92bondstreet/tic-tac-toe",
+  "dependencies": {
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0",
+    "react": "^0.14.2",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
+  }
+}
