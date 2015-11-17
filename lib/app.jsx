@@ -10,4 +10,9 @@ var Box = React.createClass({
   }
 });
 
-React.render(<Box value="X"/>, document.body);
+var BoxStyle = {
+  height: '100px',
+  width: '100px'
+};
+
+React.render(<Box value="X" style={BoxStyle}/>, document.body);
