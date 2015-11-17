@@ -9,12 +9,12 @@ var Box = React.createClass({
   },
 
   render: function onRender() {
-    return (<button onClick={this.changeValue}>{this.state.value}</button>);
+    return (<button onclick={this.click}>{this.state.value}</button>);
   },
   
-  changeValue: function(e) {
+  click: function() {
     this.setState({value: this.state.value==='X'?'O':'X'});
-  }
+  },
   
 });
 
