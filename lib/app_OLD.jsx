@@ -3,15 +3,16 @@
 var React = require('react');
 
 var Box = React.createClass({
-  /**
-   * Render a HTML button
-   * @return {ReactElement}
-   */
   'render': function onRender () {
     return (
-      <button>X</button>
+      <button>{this.props.value}</button>
     );
   }
 });
 
-React.render(<Box/>, document.body);
+var BoxStyle = {
+  height: '100px',
+  width: '100px'
+};
+
+React.render(<Box value="X" style={BoxStyle}/>, document.body);
