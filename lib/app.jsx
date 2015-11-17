@@ -26,4 +26,18 @@ var boxStyle = {
 var initialVal = 'X';
 var time = 300;
 
-React.render(<Box initialValue={initialVal} style={boxStyle}/>, document.body);
+//React.render(<Box initialValue={initialVal} style={boxStyle}/>, document.body);
+
+var Row = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Box initialValue={initialVal} style={boxStyle}/>
+        <Box initialValue={initialVal} style={boxStyle}/>
+        <Box initialValue={initialVal} style={boxStyle}/>
+      </div>
+    );
+  }
+});
+
+React.render(<Row/>, document.body);

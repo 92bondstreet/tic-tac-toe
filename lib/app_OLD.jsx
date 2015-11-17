@@ -9,14 +9,12 @@ var Box = React.createClass({
   },
 
   render: function onRender() {
-    return (<button>{this.state.value}</button>);
+    return (<button onClick={this.changeValue}>{this.state.value}</button>);
   },
   
-  componentWillMount: function() {
-    var t=this;
-	var val=this.state.value;
-    setTimeout(function(){t.setState({value: val==='X'?'O':'X'});t.componentWillMount();},time);
-  },
+  changeValue: function(e) {
+    this.setState({value: this.state.value==='X'?'O':'X'});
+  }
   
 });
 
